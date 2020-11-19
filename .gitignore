@@ -4,5 +4,4 @@ __pycache__/**
 .iypnb_checkpoints/**
 **/.ipynb_checkpoints
 
-.asv/**
-**/.asv
+**.asv

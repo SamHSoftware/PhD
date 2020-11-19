@@ -2,19 +2,25 @@
 clear;
 clc;
 
-%% Load image.
+%% Collect the file path data. 
 
-% Open the file (in this case a .tiff) needed for nuclear analysis. 
-Original_Path = uipickfiles;
+% Select the folder containing the first half of the timelapse. 
+uiwait(msgbox('Please select the folder containing the first portion of the timelapse'));
+first_timelapse_path = uipickfiles;
 
-% We now need to set the WD to Original_Path so as to create a new dir in
-%the correct location. 
-cd(Original_Path);
+% Select the folder containing the second half of the timelapse. 
+uiwait(msgbox('Please select the folder containing the second portion of the timelapse'));
+second_timelapse_path = uipickfiles;
 
-% Here, Matlab can read and show the image. 
-Original_Im_Read = imread(Original_Im);
+%% Create a new directory to contain the completed timelapse.
 
+first_timelapse_path = cell2mat(first_timelapse_path);
+cd (first_timelapse_path)
+mkdir complete_timelapse
 
+% Record the folder path for later. We'll need it to save images to the
+% correct location. 
+new_folder_path = fullfile(first_timelapse_path, 'complete_timelapse');
 
 %% Confirm that the script has ended. 
 disp('done')
