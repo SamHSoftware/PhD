@@ -30,18 +30,31 @@ new_folder_path = fullfile(first_timelapse_path, 'complete_timelapse');
 
 % Copy the first timelapse data into the new folder. 
 copyfile(first_timelapse_path, new_folder_path)
+disp('First folder copied.');
 
-% Load image names from the second directory, and figure out the greatest
-% timepoint. 
+% Determine the greastest timepoint in the previous data. 
+folder_information = dir (first_timelapse_path);
+file_list = rot90({folder_information.name}, 3); 
+image_length = cellfun('length',cellstr(file_list));
+
+name_length = length(example_image);
+file_list(~(image_length == name_length)) = [];
+T_index = strfind(example_image, '_T');
+file_list = char(file_list);
+previous_max_timepoint = max(str2num(file_list(:, T_index+2:T_index+5)));
+
+% Load image names from the second directory.
+cd (second_timelapse_path)
 folder_information = dir (second_timelapse_path);
 file_list = char(rot90({folder_information.name}, 3)); 
 
-image_legnth = length(example_image);
-
-timepoints = file_list(:, 45:47)
-timepoints(all(arrayfun('isempty',timepoints),2),:) = [];
-
+% The copying loop. 
 for n = 1 : length(folder_information)
+    
+    % Monitor progress
+    if mod(n, 1000) == 0
+        disp(n*100/length(folder_information))
+    end
     
     % Load in our file. 
     file_in_question = file_list(n, 1:end);
@@ -58,16 +71,16 @@ for n = 1 : length(folder_information)
        
         % If the file is an image, modify the name and copy it to the new
         % directory. 
-        
-        % Get the current timepoint. 
-        current_timepoint = str2double(file_in_question(T_index+2:47));
-        new_timepoint = current_timepoint + previous_max_timepoint; 
-        
+        current_timepoint = str2double(file_in_question(T_index+2:T_index+5));
+        new_timepoint = num2str((current_timepoint + previous_max_timepoint), '%04.f'); 
         new_file_name = file_in_question;
-        new_file_name(T_index+2:T_index+5) = 'XXXX';
+        new_file_name(T_index+2:T_index+5) = new_timepoint;
+        
+        copyfile(fullfile(second_timelapse_path, file_in_question), fullfile(new_folder_path, new_file_name)) 
         
     end
 end
+disp('Second folder copied.');
 
 %% Confirm that the script has ended. 
-disp('done')
+disp('Script complete.')
