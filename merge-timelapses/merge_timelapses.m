@@ -12,7 +12,7 @@
 % This script considers the first and second halves of the timelapse, then
 % merges them together into a new folder, located within the directory
 % containing the first half of the images. This new folder is called
-% 'complete-timelapse. 
+% 'complete-timelapse'. 
 
 % The timepoints of images within the second half of the timelapse are
 % corrected, such that they follow on from the maximum timepoint of the
