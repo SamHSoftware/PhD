@@ -33,7 +33,7 @@ from simulations_to_xlsx_functions import *
 # A function to allow the user to select the folder containing the simulations.
 # Function input args: none. 
 # Function output 1: The path of the folder in question. 
-file_path = folder_selection_dialog()
+simulation_directory = folder_selection_dialog()
 ```
 ... a GUI will appear (see the image below), within which, the user should select the folder containing the simulation data you wish to analyse. 
 
