@@ -13,7 +13,7 @@ E-mail: samhuguet1@gmail.com
 
 ## Here's how to unit test the package before using it: 
 
-(1) Run the ```???``` file.  
+(1) Run the ```test_simulations_to_xlsx_functions.py``` file.  
 
 This code will automatically check to see if the outpout of the code is as expected. If an error is detected, the code will notify you of the error and will give a description of what has gone wrong. If no errors are detected, then the code will print a statement confirming this, and the rest of the package will be good to run. 
 
