@@ -33,7 +33,7 @@ from simulations_to_xlsx_functions import *
 # A function to allow the user to select the folder containing the simulations.
 # Function input args: none. 
 # Function output 1: The path of the folder in question. 
-simulation_directory = folder_selection_dialog()
+file_path = folder_selection_dialog()
 ```
 ... a GUI will appear (see the image below), within which, the user should select the folder containing the simulation data you wish to analyse. 
 
@@ -52,4 +52,5 @@ simluations_to_xlsx(simulation_directory)
 
 The code will then output individual .xlsx files for each simulation. These will be stored within the original directory that you selected using the ```folder_selection_dialog()``` function. The new folder of output data will be called 'simulations_xlsx'.
 
+529115dfe5d7b05f16dfa7cf57f5d2d6766bf657
 
