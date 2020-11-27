@@ -23,7 +23,7 @@ E-mail: samhuguet1@gmail.com
 % timelapse. 
 [example_image, first_timelapse_path, second_timelapse_path] = collect_path_data();
 ```
-... A series of GUI's will appear (see the image below), with which, you will be prompted to select an example image, the folder containing the first half of the timelapse, and the folder containing the second half of the timelapse. 
+... A series of GUI's will appear (see the image below), with which, you will be prompted to select an example image, the folder containing the first half of the timelapse, and the folder containing the second half of the timelapse. These will form the script inputs. 
 
 <img src="https://github.com/SamHSoftware/PhD/blob/main/merge-timelapses/img/folder_selection.PNG?raw=true" alt="folder selection GUI" width="500"/>
 
@@ -37,15 +37,3 @@ You can find the example data sets within [this folder](https://github.com/SamHS
 % of the images. 
 merge_timelapses(example_image, first_timelapse_path, second_timelapse_path);
 ```
-
-
-
-
-
-
-
-Inputs and outputs: 
-- Script input 1: An example image. 
-- Script input 2: The folder corresponding to the first half of thetimelapse. 
-- Script input 3: The folder corresponding to the second half of the timelapse. 
-- Script output 1: A new folder named 'complete-timelapse', containing all of the images. 
