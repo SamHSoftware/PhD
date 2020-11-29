@@ -10,6 +10,12 @@ E-mail: samhuguet1@gmail.com
 - The timepoints of images within the second half of the timelapse are corrected, such that they follow on from the maximum timepoint of the first timelapse. 
 - The inputs to this script are prompted with automatic dialog boxes, from which you can select the appropriate images/directories. 
 
+## How to run unit tests to make sure the functions are working as expected. 
+
+(1) Download the package. 
+
+(2) Open and run the ```test_merge_timelapses_functions.m``` script. The script will automatically use the provided test data to run tests. If the script does not detect any errors, then a statement confirming this will be printed to the command window. If errors are detected, then you will also notified via the command window, alongside a description of the error. 
+
 ## How to use the ```RUNME.m``` file:
 
 (1) Open the ```RUNME.m``` file. 
