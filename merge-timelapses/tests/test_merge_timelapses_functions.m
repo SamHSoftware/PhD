@@ -37,3 +37,8 @@ folder_information = dir (truth_timelapse_path);
 truth_files = rot90({folder_information.name}, 3); 
 
 %% Use assertion errors to make necessary checks. 
+
+assert (isequal(test_files, truth_files), 'Test 1 failed. Assertion error: The expected images have not been detected within the test output folder.');
+
+disp('Unit testing complete. No errors detected.');
+
