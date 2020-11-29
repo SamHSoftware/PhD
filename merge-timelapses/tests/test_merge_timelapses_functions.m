@@ -27,6 +27,13 @@ second_timelapse_path = fullfile(current_directory(1:end-40), 'data', 'timelapse
 merge_timelapses(example_image, first_timelapse_path, second_timelapse_path);
 complete_timeplapse_path = fullfile(first_timelapse_path, 'complete_timelapse'); 
 
+folder_information = dir (complete_timeplapse_path);
+test_files = rot90({folder_information.name}, 3); 
+
 %% Load in information pertaining to the expected test output data. 
+
+truth_timelapse_path = fullfile(current_directory(1:end-34),'expected_test_output_data');
+folder_information = dir (truth_timelapse_path);
+truth_files = rot90({folder_information.name}, 3); 
 
 %% Use assertion errors to make necessary checks. 
