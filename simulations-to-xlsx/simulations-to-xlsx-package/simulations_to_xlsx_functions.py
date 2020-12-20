@@ -69,9 +69,11 @@ def simluations_to_xlsx(simulation_directory):
                 ((green_count*1.1+5)/((red_count*0.9)+(green_count*1.1+5)))-(green_count/(red_count + green_count)),
                 (green_count / (red_count + green_count))-((green_count*0.9)/((green_count*0.9)+(red_count*1.1+5)))
             ]
+            
+            # Append all the information to our dataframe. 
             df.append(d)
         
-        # Append all the information to our dataframe. 
+        # Convert the array to a pandas dataframe. 
         df = pd.DataFrame(df, columns=['Colony','Well','Timpoint (hours)','Number of red nuclei','Number of green nuclei','Total number of nuclei','Proportion of red nuclei','Proportion of green nuclei','Upper bound: red','Lower bound: red','Upper bound: green','Lower bound: green'])
     
         # Save our data.
