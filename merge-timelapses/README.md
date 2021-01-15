@@ -35,7 +35,7 @@ E-mail: samhuguet1@gmail.com
 
 You can find the example data sets within [this folder](https://github.com/SamHSoftware/PhD/tree/main/merge-timelapses/data).
 
-(4) Upon loading in your data, you may use the following function to merge the two timelapses into a new folder named 'complete-timelapse', located within the first timelapse folder. 
+(3) Upon loading in your data, you may use the following function to merge the two timelapses into a new folder named 'complete-timelapse', located within the first timelapse folder. 
 ```
 % Function purpose: Merge the first and second timelapse folders. 
 % Function inputs: The outputs of collect_path_data().
