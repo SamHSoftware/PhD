@@ -35,4 +35,4 @@ file_path = file_selection_dialog()
 # Funciton output 1: A new folder including grades 2.5 to 4, while excluding classes 1 to 2.5. 
 filter_classes(file_path)    
 ```
-... to create the output folder.  
+... to create the output file.  
