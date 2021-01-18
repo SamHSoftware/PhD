@@ -3,11 +3,11 @@
 ## Author details: 
 Name: Sam Huguet  
 E-mail: samhuguet1@gmail.com
-Date of creation: 15<sup>th<\sup> January 2021
+Date of creation: 15<sup>th</sup> January 2021
 
 ## Description: 
-- This module is designed to take data containing a series of numerical 'grades'. These grades correspond to folders of excel files. Each excel file has a grade. Further descriptions of the data will not be included until publication of this work. 
-- The purpose of the script is to filter the excel files, and create a new folder containg those fils with a grade of greater than 2.5. 
+- This module is designed to take data containing a series of numerical 'grades'. Further descriptions of the data will not be included until publication of this work. 
+- The purpose of the script is to filter the data such that each row of features has a grade of greater than 2.5. 
 - The main module folder contains .ipynb files and equivalent .py files. 
  
 ## How to use the ```RUNME``` file: 
