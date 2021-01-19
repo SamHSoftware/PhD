@@ -2,17 +2,18 @@
 
 ## Author details: 
 Name: Sam Huguet  
-E-mail: samhuguet1@gmail.com
+E-mail: samhuguet1@gmail.com  
 Date of creation: 15<sup>th</sup> January 2021
 
 ## Description: 
-- This module is designed to take data containing a series of numerical 'grades'. Further descriptions of the data will not be included until publication of this work. 
+- This module is designed to take data with numerous features. Each feature set (a row) contains a numerical grade. The purpose of this code is to filter each row, such that only those witha grade of above 2.5 remain. 
+- Further descriptions of the data will not be included until publication of this work. 
 - The purpose of the script is to filter the data such that each row of features has a grade of greater than 2.5. 
 - The main module folder contains .ipynb files and equivalent .py files. 
 
 ## How to unit test the module before use: 
 
-(1) Download the package, and avoid altering the organisation of the files/directories within, as this will ensure that the knows where to look for unit testing data ([You can find the unit testing data here](https://github.com/SamHSoftware/PhD/tree/main/filter_RF_grades/tests)).
+(1) Download the package, and avoid altering the organisation of the files/directories within, as this will ensure that the code knows where to look for unit testing data ([You can find the unit testing data here](https://github.com/SamHSoftware/PhD/tree/main/filter_RF_grades/tests)).
 
 (2) Open and run the ```RUNME_tests``` file in the tests folder. This code will use assertion errors to check for array equality between a newly filtered array, and a pre-provided output 'truth' array. If nothing is wrong, the code will print such a conformation. An assertion error is raised is something goes awry. 
 
