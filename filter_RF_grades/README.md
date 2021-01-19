@@ -31,7 +31,7 @@ from filter_RF_grades import *
 # Function output 1: The file path of that which was selected by the user. 
 file_path = file_selection_dialog()
 ```
-... you will load in the the necessary module functions. Then, you will see a GUI appear (see the example below) with which you can select the .csv file made by the MATLAB based random forrest regression model script. Usually, these files have a name such as 'AnalysingWaves_P1_P2_Combined_date', and it needs to contain the numerical grades we're intersted in. 
+... you will load in the the necessary module functions. Then, you will see a GUI appear (see the example below) with which you can select the .csv file made by the MATLAB based random forrest regression model script. Usually, these files have a name such as 'AnalysingWaves_P1_P2_Combined_date', and it needs to contain the numerical grades we're intersted in. The numerical grades are assumed to be within the 17<sup>th</sup> column.
 
 <img src="https://github.com/SamHSoftware/PhD/blob/main/filter_RF_grades/img/file_selection.PNG?raw=true" alt="folder selection GUI" width="500"/>
 
