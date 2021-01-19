@@ -12,7 +12,7 @@ Date of creation: 15<sup>th</sup> January 2021
 
 ## How to unit test the module before use: 
 
-(1) Download the package, and avoid altering the organisation of the files/directories within, as this will ensure that the knows where to look for unit testing data ((You can find the unit testing data here)[https://github.com/SamHSoftware/PhD/tree/main/filter_RF_grades/tests]).
+(1) Download the package, and avoid altering the organisation of the files/directories within, as this will ensure that the knows where to look for unit testing data ([You can find the unit testing data here](https://github.com/SamHSoftware/PhD/tree/main/filter_RF_grades/tests)).
 
 (2) Open and run the ```RUNME_tests``` file in the tests folder. This code will use assertion errors to check for array equality between a newly filtered array, and a pre-provided output 'truth' array. If nothing is wrong, the code will print such a conformation. An assertion error is raised is something goes awry. 
 
