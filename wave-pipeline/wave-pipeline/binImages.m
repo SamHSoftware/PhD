@@ -1,6 +1,22 @@
-%%% SCRIPT TO BIN IMAGES.
-% doYouWantTobinImages = 'No'; % 'No' is the alternative variable. 
-% scalingFactor = 0.25; % A scaling factor of 0.5 is the equivant of binnning 2 by 2. 
+%% binImages.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: The function bins a folder of images to reduce their resolution. 
+
+% Input data requirements: 
+% The images are expected to be 2D, and have been
+% produced by a Yokogawa CV7000S microscope. The image names are expected
+% to be over 60 characters in length. 
+
+% Function inputs: 
+% folder_well [1×1 cell array] --> uipickfiles provides a string directory within a 1×1 cell array.
+% doYouWantTobinImages [string] --> 'Yes' or 'No'. When set to 'Yes', the script will bin images. 
+% scalingFactor [double] --> % A scaling factor of 0.5 is the equivant of binnning 2 by 2. 
+
+% Function outputs: 
+% folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the new directory of the binned images.
 
 function folder_well = binImages(folder_well, doYouWantTobinImages, scalingFactor)
 
