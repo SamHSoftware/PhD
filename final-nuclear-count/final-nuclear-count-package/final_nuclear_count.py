@@ -16,9 +16,9 @@ def folder_selection_dialog():
 
     return directory
 
-# A function to extract and condense the relevant data. 
+# A function to extract, condense and save the relevant data. 
 # Function input arg 1: directory (string) --> The directory to the folder containing the .xlsx data.
-# Function output 1: A .csv (saved as 'final_nuclear_numbers.csv' to directory) containing the summarized information. 
+# Function output 1: ['DataFrame object] --> Contains a 1D array of the final number of nuclei per .xlsx file.
 def get_final_nuclei(directory):
      
     # Get a list of the .xlsx files. 
@@ -51,7 +51,8 @@ def get_final_nuclei(directory):
 
     # Convert the list to a pandas dataframe. 
     df = pd.DataFrame(df)
-    
+    return df 
+
     # Save the DataFrame to a .csv file. 
     new_file_name = os.path.join(directory, 'final_nuclear_numbers.csv')
     df.to_csv(new_file_name, index=False)
