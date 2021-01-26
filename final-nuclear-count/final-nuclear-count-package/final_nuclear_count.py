@@ -19,10 +19,10 @@ def folder_selection_dialog():
 # A function to extract, condense and save the relevant data. 
 # Function input arg 1: directory (string) --> The directory to the folder containing the .xlsx data.
 # Function output 1: ['DataFrame object] --> Contains a 1D array of the final number of nuclei per .xlsx file.
-def get_final_nuclei(directory):
-    
-    print('test')
-    
+# Function output 2: [bool] --> If true, saves the file to directory as 'final_nuclear_numbers.csv'.
+def get_final_nuclei(directory,
+                    save_file=True):
+     
     # Get a list of the .xlsx files. 
     files = [file for file in os.listdir(directory) if file.endswith('.xlsx')]
     
@@ -36,7 +36,7 @@ def get_final_nuclei(directory):
     
     # Create a list to hold the data. 
     df = []
-
+    
     # Loop through the individual .xlsx files and extract the 'red' information. 
     for t in range(len(files_to_analyse)):
 
@@ -52,14 +52,18 @@ def get_final_nuclei(directory):
         df.append(nuclei)
 
     # Convert the list to a pandas dataframe. 
-    df = pd.DataFrame(df)
+    df = pd.DataFrame(df) 
 
     # Save the DataFrame to a .csv file. 
-    new_file_name = os.path.join(directory, 'final_nuclear_numbers.csv')
-    df.to_csv(new_file_name, index=False)
+    if save_file == True:
+        new_file_name = os.path.join(directory, 'final_nuclear_numbers.csv')
+        df.to_csv(new_file_name, index=False)
     
     # Confirm the code is done. 
-    print("get_final_nuclei complete. Your data has been saved (as 'final_nuclear_numbers.csv') within the directory you initially selected.")
+    if save_file == True:
+        print("get_final_nuclei complete. Your data has been saved (as 'final_nuclear_numbers.csv') within the directory you initially selected.")
+    else: 
+        print('get_final_nuclei complete.')
         
     # Return the df as a function output. 
     return df
