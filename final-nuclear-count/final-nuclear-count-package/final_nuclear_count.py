@@ -20,7 +20,9 @@ def folder_selection_dialog():
 # Function input arg 1: directory (string) --> The directory to the folder containing the .xlsx data.
 # Function output 1: ['DataFrame object] --> Contains a 1D array of the final number of nuclei per .xlsx file.
 def get_final_nuclei(directory):
-     
+    
+    print('test')
+    
     # Get a list of the .xlsx files. 
     files = [file for file in os.listdir(directory) if file.endswith('.xlsx')]
     
@@ -34,7 +36,7 @@ def get_final_nuclei(directory):
     
     # Create a list to hold the data. 
     df = []
-    
+
     # Loop through the individual .xlsx files and extract the 'red' information. 
     for t in range(len(files_to_analyse)):
 
@@ -57,7 +59,7 @@ def get_final_nuclei(directory):
     df.to_csv(new_file_name, index=False)
     
     # Confirm the code is done. 
-    print("Process complete. Your data has been saved (as 'final_nuclear_numbers.csv') within the directory you initially selected.")
+    print("get_final_nuclei complete. Your data has been saved (as 'final_nuclear_numbers.csv') within the directory you initially selected.")
         
     # Return the df as a function output. 
     return df
