@@ -51,7 +51,6 @@ def get_final_nuclei(directory):
 
     # Convert the list to a pandas dataframe. 
     df = pd.DataFrame(df)
-    return df 
 
     # Save the DataFrame to a .csv file. 
     new_file_name = os.path.join(directory, 'final_nuclear_numbers.csv')
@@ -59,3 +58,6 @@ def get_final_nuclei(directory):
     
     # Confirm the code is done. 
     print("Process complete. Your data has been saved (as 'final_nuclear_numbers.csv') within the directory you initially selected.")
+        
+    # Return the df as a function output. 
+    return df
