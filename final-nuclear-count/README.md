@@ -30,3 +30,7 @@ from final_nuclear_count import *
 # Function output 1: The path of that the folder selected by the user. 
 directory = folder_selection_dialog()
 ```
+... you will load in the the necessary module functions. Then, you will see a GUI appear (see the example below) with which you can select the 'AnalysingWaves' file stored within the 'Processed Data' folder. In the example data, this file is called 'AnalysingWaves_P1_P2_Combined_2021123_051.csv'. 
+
+
+The code will look through this file, and find out which .xlsx files it needs to analyse within the parent directory. 
