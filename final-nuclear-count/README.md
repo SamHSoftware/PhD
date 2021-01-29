@@ -32,5 +32,9 @@ directory = folder_selection_dialog()
 ```
 ... you will load in the the necessary module functions. Then, you will see a GUI appear (see the example below) with which you can select the 'AnalysingWaves' file stored within the 'Processed Data' folder. In the example data, this file is called 'AnalysingWaves_P1_P2_Combined_2021123_051.csv'. 
 
+<img src="https://github.com/SamHSoftware/PhD/blob/main/final-nuclear-count/img/folder_selection.PNG?raw=true" alt="file selection GUI" width="500"/>
+
+(3) Upon loading in the data and getting the file_path variable with the previous function, use the following code...
+
 
 The code will look through this file, and find out which .xlsx files it needs to analyse within the parent directory. 
