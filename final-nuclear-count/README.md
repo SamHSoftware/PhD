@@ -35,6 +35,12 @@ directory = folder_selection_dialog()
 <img src="https://github.com/SamHSoftware/PhD/blob/main/final-nuclear-count/img/folder_selection.PNG?raw=true" alt="file selection GUI" width="500"/>
 
 (3) Upon loading in the data and getting the file_path variable with the previous function, use the following code...
+```
+# A function to extract, condense and save the final number of nuclei per timepoint. 
+# Function input arg 1: directory (string) --> The directory to the folder containing the .xlsx data.
+# Function output 1: A .csv (saved to 'directory') containing the summarised information. 
+get_final_nuclei(directory)
+```
+... to look through the 'AnalysingWaves' file, and find out which .xlsx files it needs to analyse within the parent directory.  
 
-
-The code will look through this file, and find out which .xlsx files it needs to analyse within the parent directory. 
+These .xlsx files will then be considered, their relevant data extracted and saved in the same directory as the other .xlsx files, as 'final_nuclear_numbers.csv'.
