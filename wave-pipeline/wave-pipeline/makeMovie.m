@@ -94,6 +94,7 @@ switch doYouWantToMakeAMovie
                 cd (savingDirectory);
                 writeVideo(v,img);
             end
+
             close(v);     
             
             %% Make a Colour movie. 
@@ -131,8 +132,8 @@ switch doYouWantToMakeAMovie
                 
                 % Iterate through each of the pixel values of the image,
                 % and manually change them to RGB colours which don't
-                % RANDOMLY CHANGE WHEN NEW COLONIES APPEAR. FUCK YOU
-                % LABEL2RGB.
+                % change when new colonies appear (this happens with
+                % LABEL2RGB). 
                 for h = 1:numberUniqueValues
 
                     pixelValue = uniqueValues(h); % This is the pixel value we want to change to and RGB value. 
@@ -156,6 +157,7 @@ switch doYouWantToMakeAMovie
                         RGBValues = theColourMap(randomColourIndex, :);
                         
                     elseif option == 2
+                        
                         if pixelValue == 0
                             
                             [heightColourIndex, ~] = size(colourIndex);
@@ -193,6 +195,7 @@ switch doYouWantToMakeAMovie
                 end
                 
                 %% Add number to label each colony.
+                
                 [heightImg, widthImg] = size(img); % size of the img.
                 fourCorners = cell(0,0); % make an empty matrix to store the positions of the 4 corners.
                 fourCorners(1,1) = {1}; % start filling in this matrix. Later, this'll be used to see which of the four corners the colonies are closest too.
@@ -238,7 +241,6 @@ switch doYouWantToMakeAMovie
                     
                     % Get the bounding box of the colony, then add a number
                     % to the corner which is closest to the furthest corner
-                    % (think about it..) 
                     boundingBox = struct2table(regionprops(thecolonyMask, 'BoundingBox'));
                     boundingBox = table2array(boundingBox);
              
@@ -273,6 +275,7 @@ switch doYouWantToMakeAMovie
                 end 
                 
                 %% Resize and write in the video frame.
+                
                 heightTOwidth = heightImg/widthImg;
                 nrows = heightTOwidth*1000;
                 ncols = 1000;
