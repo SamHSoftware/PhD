@@ -1,4 +1,20 @@
-% doYouWantToMakeAMovie = 'Yes'
+%% makeMovie.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: The function makes binary and colour movies of colonies as they
+% are tracked through time and space. 
+
+% Function inputs: 
+% CORRECTEDdirMatrix [n×1 cell array] --> Provided by colony tracking function. Each cell contains a directory to a folder of tracked mega-grids e.g. 'D:\B02_CORRECTED'.
+% doYouWantToMakeAMovie [string] --> 'Yes' or 'No'. When set to 'Yes', the script will make the movies. 
+% theChosenColourMap [colormap] --> The chosen colormap e.g. hsv. 
+% dataFolders [n x m cell array] --> Provided by makeWavePlots fucntion. First column denotes the well name e.g. 'D02'. Second column denotes the corresponding directories into which the movies are saved. 
+% fontSize [int] --> Recommended font size of 70. 
+
+% Function outputs: 
+% binary and colour movies of colonies are they are tracked through space and time. movies save to same location as wave .xlsx files.
 
 function makeMovie(CORRECTEDdirMatrix, doYouWantToMakeAMovie, theChosenColourMap, dataFolders, fontSize)
 
