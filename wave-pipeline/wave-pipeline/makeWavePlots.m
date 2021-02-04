@@ -21,18 +21,12 @@
 % greenChannel [int] --> Green channel number e.g. 3. 
 % timelapseInterval [int] --> Timelapse interval in hours e.g. 1 or 0.5.
 % cellType [str] --> The cell type being used (plural) e.g. 'hESCs'.
-% wholeColony [str] --> 
-
+% wholeColony [str] --> 'Yes' or 'No'. When 'Yes' Analyses the whole colony. When 'No' Manual code modification required (beta feature). 
 
 % Function outputs: 
-% folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the new directory of the binned images.
-
-
+% dataFolders [n x 1 cell array of strings] --> Each cell denotes a folder within which the new .xlsx files and corresponding .pdf plots are saved. 
 
 function [dataFolders] = makeWavePlots(colonyStruc, CORRECTEDdirMatrix, folder_well, redChannel, greenChannel, timelapseInterval, cellType, wholeColony)
-%%% This function is designed to follow on from
-%%% 'analyseColonyIdentityArray'. It takes the colonyStruc and use it to
-%%% iterate through all of the colonies which can be analysed. 
 
 %% Construct the dataMatrix and necessary directories. 
 
