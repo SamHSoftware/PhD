@@ -1,3 +1,27 @@
+%% makeWavePlots.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: This function is designed to follow on from the function called
+% 'analyseColonyIdentityArray.m'. This function makes .xlsx files
+% containing cell cycle wave data, and also makes .pdf files with the
+% corresponding graphs. 
+
+% Input data requirements: 
+% The images are expected to be 2D, and have been
+% produced by a Yokogawa CV7000S microscope. The image names are expected
+% to be over 60 characters in length. 
+
+% Function inputs: 
+% colonyStruc [struc] --> Provided by the analyseColonyIdentityArray.m function. 
+% CORRECTEDdirMatrix [n x 1 cell array] --> Each cell contains a [string] detailing a directory containing images of tracked colonies of hESCs.  
+% scalingFactor [double] --> % A scaling factor of 0.5 is the equivant of binnning 2 by 2. 
+
+% Function outputs: 
+% folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the new directory of the binned images.
+
+
 
 function [dataFolders] = makeWavePlots(colonyStruc, CORRECTEDdirMatrix, folder_well, redChannel, greenChannel, timelapseInterval, cellType, wholeColony)
 %%% This function is designed to follow on from
