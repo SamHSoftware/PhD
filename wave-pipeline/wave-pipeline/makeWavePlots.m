@@ -16,7 +16,13 @@
 % Function inputs: 
 % colonyStruc [struc] --> Provided by the analyseColonyIdentityArray.m function. 
 % CORRECTEDdirMatrix [n x 1 cell array] --> Each cell contains a [string] detailing a directory containing images of tracked colonies of hESCs.  
-% scalingFactor [double] --> % A scaling factor of 0.5 is the equivant of binnning 2 by 2. 
+% folder_well [str] --> Directory of the folder containing the flat field corrected images. 
+% redChannel [int] --> Red channel number e.g. 2. 
+% greenChannel [int] --> Green channel number e.g. 3. 
+% timelapseInterval [int] --> Timelapse interval in hours e.g. 1 or 0.5.
+% cellType [str] --> The cell type being used (plural) e.g. 'hESCs'.
+% wholeColony [str] --> 
+
 
 % Function outputs: 
 % folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the new directory of the binned images.
