@@ -30,8 +30,8 @@ function [dataFolders] = makeWavePlots(colonyStruc, CORRECTEDdirMatrix, folder_w
 
 %% Construct the dataMatrix and necessary directories. 
 
+% Construct the dataFolders cell array to store cell cycle wave data. 
 dataFolders = cell(0,0);
-
 colonyDataMatrix = cell(1,1);
 colonyDataMatrix(1,1) = {'Colony'};
 colonyDataMatrix(1,2) = {'Well'};
