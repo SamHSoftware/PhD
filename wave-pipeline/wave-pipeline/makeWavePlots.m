@@ -76,7 +76,7 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
     numberOfColonies = length(coloniesOfWell);
     
     % Iterate through the colonies which need anlysing. 
-    for u = 1:numberOfColonies 
+    for u = 27:numberOfColonies 
         
         s1 = 'progress_u_loop____Iterate through colonies = '; 
         value = num2str((u/numberOfColonies)*100);
@@ -128,8 +128,10 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
             colonyMaskH2B = bwlabel(colonyMaskH2B, 8); % This is the mask of differently labelled cells. 
             numberOfCellsInColony = max(unique(colonyMaskH2B)); % Get the number of cells in the colony.
             
-            % Get the centroid coordiantes of the colony for this timepoint. 
-            [x_mid, y_mid] = getColonyCentroid(H2B == colonyInQuestion);
+            % If the image has a colony, get the centroid coordiantes of the colony for this timepoint. 
+            if any(binaryColonyImage, 'all') == 1   
+                [x_mid, y_mid, pseudo_col_radius] = getColonyCentroid(H2B == colonyInQuestion);
+            end 
             
             % Get the red and green intensites for the nuclei, as well as their centroids.
             redMeasurements = regionprops(colonyMaskH2B, redRaw, 'MeanIntensity', 'Centroid');
@@ -154,7 +156,6 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
                 colonyDataMatrix(lengthColonyDataMatrix+1,6) = {redMeasurements(a).MeanIntensity};
                 colonyDataMatrix(lengthColonyDataMatrix+1,7) = {cell2mat(struct2cell(greenMeasurements(a)))};
                 colonyDataMatrix(lengthColonyDataMatrix+1,10) = {distance_to_center};
-
             end    
         end 
     end 
@@ -243,6 +244,7 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
         colony_k(1,10) = {'Lower bound: Proportion of cells in G1 phase'};
         colony_k(1,11) = {'Upper bound: Proportion of cells in S, G2 or M phases'}; 
         colony_k(1,12) = {'Lower bound: Proportion of cells in S, G2 or M phases'}; 
+        colony_k(1,13) = {'Mean distance of FUCCI-red nuclei from centroid of colony'}; 
         
         %% Loop through each timepoint of the table and count the number of red and green cells. Afterwards, add that info to a table and make a graph out of it! 
         timepoints = cell2mat(temporaryColonyDataMatrix(:,3));
@@ -257,6 +259,11 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
             % Identify the number of green cells and red cells. 
             numberOfRedCells = sum(cell2mat(timepointColonyDataMatrix(:,8)));
             numberOfGreenCells = sum(cell2mat(timepointColonyDataMatrix(:,9)));
+            
+            % Calculate the mean distance of FUCCI-red nuclei from centroid of colony.
+            redindices = logical(cell2mat(timepointColonyDataMatrix(:,8)));
+            nuclear_distances = cell2mat(timepointColonyDataMatrix(:,10));
+            mean_red_nuclear_distance = mean(nuclear_distances(redindices));
             
             % If there are no red or green cells detected in the timepoint,
             % then skip to the next iteration of the loop. 
@@ -279,6 +286,7 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
             colony_k(lengthOfColony_k+1,10) = {(cell2mat(colony_k(lengthOfColony_k+1, 7)))-((numberOfRedCells*0.9)/((numberOfRedCells*0.9)+(numberOfGreenCells*1.1+5)))};
             colony_k(lengthOfColony_k+1,11) = {((numberOfGreenCells*1.1+5)/((numberOfRedCells*0.9)+(numberOfGreenCells*1.1+5)))-(cell2mat(colony_k(lengthOfColony_k+1, 8)))}; 
             colony_k(lengthOfColony_k+1,12) = {(cell2mat(colony_k(lengthOfColony_k+1, 8)))-((numberOfGreenCells*0.9)/((numberOfGreenCells*0.9)+(numberOfRedCells*1.1+5)))}; 
+            colony_k(lengthOfColony_k+1,13) = {mean_red_nuclear_distance};
             
         end 
         
