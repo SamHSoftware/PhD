@@ -42,6 +42,7 @@ colonyDataMatrix(1,6) = {'Mean Red Intensity'};
 colonyDataMatrix(1,7) = {'Mean Green Intensity'};
 colonyDataMatrix(1,8) = {'Red Identity'}; 
 colonyDataMatrix(1,9) = {'Green Identity'}; 
+colonyDataMatrix(1,10) = {'Mean red distance from colony center'}; 
 
 wellsOfStruc = string(vertcat(colonyStruc.name));
 [numberOfWells, ~] = size(wellsOfStruc);
