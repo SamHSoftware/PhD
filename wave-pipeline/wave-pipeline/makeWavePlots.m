@@ -129,7 +129,7 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
             numberOfCellsInColony = max(unique(colonyMaskH2B)); % Get the number of cells in the colony.
             
             % If the image has a colony, get the centroid coordiantes of the colony for this timepoint. 
-            if any(binaryColonyImage, 'all') == 1   
+            if numberOfCellsInColony > 0   
                 [x_mid, y_mid, pseudo_col_radius] = getColonyCentroid(H2B == colonyInQuestion);
             end 
             
@@ -145,6 +145,7 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
                 x_sqrd = (nuclear_coordiantes(1)-x_mid)^2;
                 y_sqrd = (nuclear_coordiantes(2)-y_mid)^2;
                 distance_to_center = sqrt(x_sqrd + y_sqrd);
+                normalised_distance_to_center = distance_to_center / pseudo_col_radius; 
                 
                 % Record the data.
                 [lengthColonyDataMatrix, ~] = size(colonyDataMatrix);
@@ -155,7 +156,7 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
                 colonyDataMatrix(lengthColonyDataMatrix+1,5) = {a};
                 colonyDataMatrix(lengthColonyDataMatrix+1,6) = {redMeasurements(a).MeanIntensity};
                 colonyDataMatrix(lengthColonyDataMatrix+1,7) = {cell2mat(struct2cell(greenMeasurements(a)))};
-                colonyDataMatrix(lengthColonyDataMatrix+1,10) = {distance_to_center};
+                colonyDataMatrix(lengthColonyDataMatrix+1,10) = {normalised_distance_to_center};
             end    
         end 
     end 
@@ -290,6 +291,12 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
             
         end 
         
+        % We now need to re-normalise the distance data, so that the values fall between 0 and 1. 
+        distances = cell2mat(colony_k(2:end, 13));
+        normalised_distances = num2cell(distances / (max(distances))); 
+        colony_k(2:end, 13) = normalised_distances;
+        
+        
         %% Save the data as an excel file. 
         
         % Make a new directory for the specific well in question. 
@@ -312,7 +319,7 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
             continue; 
         end
         
-        Title = strcat(well, '_innerRegion_nuclei_Colony_','_', num2str(colonyInQuestion),'.xlsx');
+        Title = strcat(well, '_Colony_','_', num2str(colonyInQuestion),'.xlsx');
 
         % Here we need to save dataArray. This will save over pre-existing files
         % with the same name. 
@@ -399,7 +406,7 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
         thefigure.Units = 'Inches';
         pos = get(thefigure,'OuterPosition');
         set(thefigure,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
-        savePlotAs = cell2mat(strcat(char(well),{' '},'innerRegion_nuclei_Colony',{' '},num2str(colonyInQuestion)));
+        savePlotAs = cell2mat(strcat(char(well),{' '},'_Colony',{' '},num2str(colonyInQuestion)));
         print(thefigure,savePlotAs,'-dpdf','-r0')
         
         close(gcf);
