@@ -120,27 +120,29 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
             greenRaw = imread(greenRaw);
             
             % Isolate the colony of interest. 
-            
             colonyMaskH2B = H2B == colonyInQuestion;
-
             if strcmp('No', wholeColony) == 1
                 [outer25um_nuclei, notOuter25um_nuclei, innerRegion_nuclei, notInnerRegion_nuclei] = colonyRegions(colonyMaskH2B);
                 colonyMaskH2B = innerRegion_nuclei;
             end
-            
             colonyMaskH2B = bwlabel(colonyMaskH2B, 8); % This is the mask of differently labelled cells. 
             numberOfCellsInColony = max(unique(colonyMaskH2B)); % Get the number of cells in the colony.
             
+            % Get the centroid coordiantes of the colony for this timepoint. 
+            [x_mid, y_mid] = getColonyCentroid(H2B == colonyInQuestion);
+            
+            % Get the red and green intensites for the nuclei, as well as their centroids.
+            redMeasurements = regionprops(colonyMaskH2B, redRaw, 'MeanIntensity', 'Centroid');
+            greenMeasurements = regionprops(colonyMaskH2B, greenRaw, 'MeanIntensity');
+
             % loop through each cell of the colony and analyse it's FUCCI signals. 
             for a = 1:numberOfCellsInColony
                 
-                % Get the red intensites for the nuclei.
-                redMeasurements = regionprops(colonyMaskH2B, redRaw, 'MeanIntensity');
-                redIntensityMean = cell2mat(struct2cell(redMeasurements(a)));
-                 
-                % Get the green intiesities for the nuclei. 
-                greenMeasurements = regionprops(colonyMaskH2B, greenRaw, 'MeanIntensity');
-                greenIntensityMean = cell2mat(struct2cell(greenMeasurements(a)));
+                % Calculate the distance between the nuclei and the center of the colony.             
+                nuclear_coordiantes = redMeasurements(a).Centroid;
+                x_sqrd = 
+                y_sqrd = 
+                distance = sqrt(x_sqrd + y_sqrd);
                 
                 % Record the data.
                 [lengthColonyDataMatrix, ~] = size(colonyDataMatrix);
@@ -149,8 +151,8 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
                 colonyDataMatrix(lengthColonyDataMatrix+1,3) = {p};
                 colonyDataMatrix(lengthColonyDataMatrix+1,4) = {p*timelapseInterval};
                 colonyDataMatrix(lengthColonyDataMatrix+1,5) = {a};
-                colonyDataMatrix(lengthColonyDataMatrix+1,6) = {redIntensityMean};
-                colonyDataMatrix(lengthColonyDataMatrix+1,7) = {greenIntensityMean};
+                colonyDataMatrix(lengthColonyDataMatrix+1,6) = {redMeasurements(a).MeanIntensity};
+                colonyDataMatrix(lengthColonyDataMatrix+1,7) = {cell2mat(struct2cell(greenMeasurements(a)))};
                 
             end    
         end 
