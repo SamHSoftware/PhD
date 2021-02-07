@@ -24,7 +24,8 @@ function [x_mid, y_mid] = getColonyCentroid(binaryColonyImage)
     % Fill in the colony. 
     [height, width, ~] = size(binaryColonyImage);
     filled_colony = poly2mask(all_position(colony_boundary,1),all_position(colony_boundary,2),height,width); % Make a mask of the colony. 
-
+    filled_colony = bwareafilt(filled_colony, 1);
+    
     % Get the center of the colony 
     feature_frame.colony_polygon = [all_position(colony_boundary,1) all_position(colony_boundary,2)]; %- position of the colony
     s = regionprops(filled_colony,'Centroid','MajorAxisLength','MinorAxisLength','Orientation','Circularity','Eccentricity');
