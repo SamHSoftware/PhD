@@ -140,9 +140,9 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
                 
                 % Calculate the distance between the nuclei and the center of the colony.             
                 nuclear_coordiantes = redMeasurements(a).Centroid;
-                x_sqrd = 
-                y_sqrd = 
-                distance = sqrt(x_sqrd + y_sqrd);
+                x_sqrd = (nuclear_coordiantes(1)-x_mid)^2;
+                y_sqrd = (nuclear_coordiantes(2)-y_mid)^2;
+                distance_to_center = sqrt(x_sqrd + y_sqrd);
                 
                 % Record the data.
                 [lengthColonyDataMatrix, ~] = size(colonyDataMatrix);
@@ -153,7 +153,8 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
                 colonyDataMatrix(lengthColonyDataMatrix+1,5) = {a};
                 colonyDataMatrix(lengthColonyDataMatrix+1,6) = {redMeasurements(a).MeanIntensity};
                 colonyDataMatrix(lengthColonyDataMatrix+1,7) = {cell2mat(struct2cell(greenMeasurements(a)))};
-                
+                colonyDataMatrix(lengthColonyDataMatrix+1,10) = {distance_to_center};
+
             end    
         end 
     end 
