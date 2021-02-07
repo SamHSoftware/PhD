@@ -12,7 +12,7 @@
 % Function outputs: 
 % colony centroid [1 x 2 double array] --> First value is the x position, second is the y position. 
 
-function [x, y] = getColonyCentroid(binaryColonyImage)
+function [x_mid, y_mid] = getColonyCentroid(binaryColonyImage)
 
     % Get the x and y positions of all the nuclei in the colony. 
     colonyinfo = regionprops(binaryColonyImage, 'centroid'); % Get the regionprops info for the colony.
@@ -21,9 +21,12 @@ function [x, y] = getColonyCentroid(binaryColonyImage)
     y = all_position(:,2);
     colony_boundary = boundary(x, y, 1); % Get the boundary of the colony.
 
+    % Fill in the colony. 
+    [height, width, ~] = size(binaryColonyImage);
+    filled_colony = poly2mask(all_position(colony_boundary,1),all_position(colony_boundary,2),height,width); % Make a mask of the colony. 
+
     % Get the center of the colony 
     feature_frame.colony_polygon = [all_position(colony_boundary,1) all_position(colony_boundary,2)]; %- position of the colony
-
     s = regionprops(filled_colony,'Centroid','MajorAxisLength','MinorAxisLength','Orientation','Circularity','Eccentricity');
         s = s(1);
         short_angle = (s.Orientation)*pi/180;
