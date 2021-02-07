@@ -10,9 +10,11 @@
 % binarycolonyImage [n x m logical] --> The binary image. Colony nuclei should be of value 1, while background should be 0. 
 
 % Function outputs: 
-% colony centroid [1 x 2 double array] --> First value is the x position, second is the y position. 
+% Colony x position [double]
+% Colony y position [double] 
+% Colony radius [double] --> Radius is calculated assuming the colony is a circle. 
 
-function [x_mid, y_mid] = getColonyCentroid(binaryColonyImage)
+function [x_mid, y_mid, radius] = getColonyCentroid(binaryColonyImage)
 
     % Get the x and y positions of all the nuclei in the colony. 
     colonyinfo = regionprops(binaryColonyImage, 'centroid'); % Get the regionprops info for the colony.
@@ -25,6 +27,10 @@ function [x_mid, y_mid] = getColonyCentroid(binaryColonyImage)
     [height, width, ~] = size(binaryColonyImage);
     filled_colony = poly2mask(all_position(colony_boundary,1),all_position(colony_boundary,2),height,width); % Make a mask of the colony. 
     filled_colony = bwareafilt(filled_colony, 1);
+    
+    % Calculate the area, then assume the colony is a circle to calculate the radius. 
+    colony_area = sum(filled_colony, 'all'); 
+    radius = sqrt(colony_area/pi);
     
     % Get the center of the colony 
     feature_frame.colony_polygon = [all_position(colony_boundary,1) all_position(colony_boundary,2)]; %- position of the colony
