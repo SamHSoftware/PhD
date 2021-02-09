@@ -76,7 +76,7 @@ for y = 1:numberOfWells % Iterate through the wells which need analysing.
     numberOfColonies = length(coloniesOfWell);
     
     % Iterate through the colonies which need anlysing. 
-    for u = 27:numberOfColonies 
+    for u = 1:numberOfColonies 
         
         s1 = 'progress_u_loop____Iterate through colonies = '; 
         value = num2str((u/numberOfColonies)*100);
@@ -413,7 +413,6 @@ for j = 1:numberOfWells % Iterate through the wells which need analysing.
         
     end 
 end 
-
 
 end 
 
