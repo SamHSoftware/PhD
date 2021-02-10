@@ -8,7 +8,7 @@
 
 % Function inputs: 
 % colonyIdentityLocations [n x 3 cell array] --> First column provides the well name. Second column provides the corresponding directories of corrected megagrids. Third directory contains the name of the colonyIdentity file, containing tracking information for that well.  
-% timeThreshold [n x 1 cell array] --> Each cell contains a [string] detailing a directory containing images of tracked colonies of hESCs.  
+% timeThreshold [int] --> The time threshold in hours. If a colony is not tracked beyond this threshold, it is not analysed.  
 
 % Function outputs: 
 % colonyStruc [struc] --> Details the colones which need to be analysed per well, and the number of timepoints each should be considered. 
