@@ -1,14 +1,17 @@
+%% analyseColonyIdentityArray.m
 
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
 
+% Purpose: This function is designed to follow on from the colony tracking function, the first output of which is the first input for this function. 
+% This function analyses the data from the tracking process, and determins which colonies are worth tracking, based on fusion and death events. 
 
+% Function inputs: 
+% colonyIdentityLocations [n x 3 cell array] --> First column provides the well name. Second column provides the corresponding directories of corrected megagrids. Third directory contains the name of the colonyIdentity file, containing tracking information for that well.  
+% timeThreshold [n x 1 cell array] --> Each cell contains a [string] detailing a directory containing images of tracked colonies of hESCs.  
 
-
-%%% THIS PREAMBLEJUST LOADS IN THE NECESSARY 
-
-
-% timeThreshold = 15; % We won't analyse colonies which last below 15 hours.
-
-
+% Function outputs: 
+% colonyStruc [struc] --> Details the colones which need to be analysed per well, and the number of timepoints each should be considered. 
 
 function [colonyStruc] = analyseColonyIdentityArray(colonyIdentityLocations, timeThreshold)
  
