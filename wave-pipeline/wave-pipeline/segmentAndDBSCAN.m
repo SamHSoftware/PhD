@@ -1,4 +1,18 @@
+%% segmentAndDBSCAN.m
 
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: This function clusters nuclei into colonies which it then tracks through multiple time points. 
+
+% Function inputs: 
+% gridsFolder [1×1 cell array] --> Cell contains a string with the parent directory containing the folders of mega-grids. 
+% H2BChannel [int] --> If the channel for H2B is C01, enter 1 for this variable. 
+% binFactor [double] --> The number of pixels in each axis which were binned. e.g. a binFactor of 4 would indicate that 4x4=16 pixels were binned into individual pixels. 
+% lengthOfPixel = length of pixel in microns at current magnification. For 20x, it is 0.325.
+% machineModel [struc] --> The random forest machine model loaded within the WavePipeline.m file. 
+
+% Function outputs: For each well, creates a folder of corrected (tracked) images within gridsFolder. 
 
 function segmentAndDBSCAN(gridsFolder, H2BChannel, binFactor, lengthOfPixel, machineModel)
  %%%%%% This function aims at performing the clustering and tracking of
