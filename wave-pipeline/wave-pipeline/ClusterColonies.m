@@ -1,20 +1,25 @@
+%% ClusteredColonies.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: 
+% Performs spatial clustering of cells in a 2D image for a single timepoint. 
+% This function is used within the segmentAndDBSCAN function. 
+
+% Function inputs: 
+% mask_nuc [array] --> Binary image with background = 0, and nuclei = 1. 
+% param_CC [struc] --> Structure with parameters for this function. Example values are below. 
+%   param_CC.size_threshold = 200;
+%   param_CC.numNuclei = 6;
+%   param_CC.elipse = 85;
+
+% Function outputs: 
+% clusteredColonies [array] --> The image of nuclei, now clustered such
+% that the nuclei of each colony are of a distinct value. Background = 0
+% and lone-nuclei = 1. 
+
 function clusteredColonies = ClusterColonies(mask_nuc, param_CC)
-
-%%%% Function to perform the spatial clustering of cells in a 2D image for
-%%%% a single timepoint
-
-% fname = 'SegmentedMovie_D03.tif';
-% info = imfinfo(fname);
-% num_images = numel(info);
-% for k = 1:num_images
-%     mask_nuc = imread(fname, k);
-%     % ... Do something with image A ...
-% end
-
-%% Param settings.  
-% param_CC.size_threshold = 200;
-% param_CC.numNuclei = 6;
-% param_CC.elipse = 85;
 
 %% Remove small objects from the image. 
 mask_nuc = bwareaopen(mask_nuc, param_CC.size_threshold);
