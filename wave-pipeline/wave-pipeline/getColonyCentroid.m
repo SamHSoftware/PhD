@@ -21,7 +21,7 @@ function [x_mid, y_mid, radius] = getColonyCentroid(binaryColonyImage)
     all_position = vertcat(colonyinfo.Centroid); % Concatenate all the pixel informations for all the nuclei.
     x = all_position(:,1);
     y = all_position(:,2);
-    colony_boundary = boundary(x, y, 1); % Get the boundary of the colony.
+    colony_boundary = boundary(x, y, 0.5); % Get the boundary of the colony.
 
     % Fill in the colony. 
     [height, width, ~] = size(binaryColonyImage);
@@ -45,6 +45,7 @@ function [x_mid, y_mid, radius] = getColonyCentroid(binaryColonyImage)
         ystart = floor(centroid_coords(2)-long_length*cos(short_angle));
         [x_line,y_line] = bresenham(xstart,ystart,xend,yend);
         [Vin, ~] = inpoly2([x_line,y_line],feature_frame.colony_polygon);
+
         x_in = x_line(Vin);
         y_in = y_line(Vin);
         x_mid = x_in(ceil(end/2));
