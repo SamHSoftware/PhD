@@ -1,6 +1,28 @@
+%% colonyTracking.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: This function follows on from the segmentAndDBSCAN function.
+% This function tracks colonies of human embyonic stem cells through time
+% and space. 
+
+% Input data requirements: 
+% The images are expected to be 2D, and have been
+% produced by a Yokogawa CV7000S microscope. The image names are expected
+% to be over 60 characters in length. 
+
+% Function inputs: 
+% gridsFolder [str] --> Directory containing the 'Grids' folder. 
+% timelapseInterval [int] --> Timelapse interval in hours. E.g. If you have 1 hour between timepoints, set this variable to 1. 
+% binFactor [double] --> The number of pixels in each axis which were binned. e.g. a binFactor of 4 would indicate that 4x4=16 pixels were binned into individual pixels. 
+% lengthOfPixel = length of pixel in microns at current magnification. For 20x, it is 0.325.
+
+% Function outputs: 
+% colonyIdentityLocations [n x 3 cell array] --> First column provides the well name. Second column provides the corresponding directories of corrected megagrids. Third directory contains the name of the colonyIdentity file, containing tracking information for that well.  
+% CORRECTEDdirMatrix [n x 1 cell array] --> Each cell contains a [string] detailing a directory containing images of tracked colonies of hESCs.  
+
 function [colonyIdentityLocations, CORRECTEDdirMatrix] = colonyTracking_7(gridsFolder, timelapseInterval,  binFactor, lengthOfPixel)
- %%%%%% This function aims at performing the clustering and tracking of
- %%%%%% colonies through multiple time points. 
 
 %% This portion of the script provides the directory that would otherwise be given by the main code. 
 % gridsFolder = cell2mat(uipickfiles); % Select the files. 
