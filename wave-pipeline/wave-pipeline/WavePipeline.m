@@ -41,7 +41,7 @@ timelapseInterval = 1;
 H2BChannel = 1; % double value needed e.g. 1.
 binFactor = 4; % This is the amount of binning that has been performed on the images. 
 lengthOfPixel = 0.325; % length (microns) of a pixel 20x short working distance lense, with no binning. The pixel size of the sensor is 6.5 um. That means that each pixel for 20x is 6.5/20 = 0.325 um.
-[colonyIdentityLocations, CORRECTEDdirMatrix] = colonyTracking_7(gridsFolder, timelapseInterval,  binFactor, lengthOfPixel);
+[colonyIdentityLocations, CORRECTEDdirMatrix] = colonyTracking(gridsFolder, timelapseInterval,  binFactor, lengthOfPixel);
 
 %% I take the colonyIdentityLocations info, and I use it to determine which colonies we can actually track.
 timeThreshold = 24; % The min hours a colony needs to exist for it to be considered for analysis.
