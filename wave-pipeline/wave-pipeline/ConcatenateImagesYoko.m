@@ -1,6 +1,17 @@
-%%% SCRIPT TO CONCATENATE IMAGES 
+%% ConcatenateImagesYoko.m
 
-% folder_well = uipickfiles;
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: The function stitches (concatenates) images together to form a
+% multi-field-stiched-image, a.k.a. 'a mega-grid'.  
+
+% Function inputs: 
+% folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the new directory of the binned images.
+% matrix_field [n×m in array] --> Here, we manually construct an array detailing the number of each field of view. E.g. For a 2×2 array, matrix_field = [1 2; 3 4].
+
+% Function outputs: 
+% gridsFolder [1×1 cell array] --> Cell contains a string with the parent directory containing the folders of mega-grids. 
 
 function [folder_output] = ConcatenateImagesYoko(folder_well, matrix_field)
 
