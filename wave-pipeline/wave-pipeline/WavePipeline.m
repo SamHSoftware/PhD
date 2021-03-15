@@ -1,4 +1,20 @@
-%%% Pipeline to automate wave analysis.
+%% WavePipeline.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: This pipeline is deisgned to track human pluripotent stem cell
+% colonies and extract fluorescence information from individual nuclei. 
+
+% Pipeline inputs: 
+% As described below, the user will need to select a file (the trained
+% Random Forest segmentation model) and a directory (that which contans
+% images from the Yokogawa CV7000S microscope). 
+ 
+% Pipeline outputs: 
+% Cell cycle data pertaining to my PhD. 
+
+%% Clear the workspace and command window. 
 clear; clc;
 
 %% Select the folder which contains all the tiff images gathered by the Yoko.
