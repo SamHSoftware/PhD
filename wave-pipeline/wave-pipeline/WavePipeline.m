@@ -1,4 +1,4 @@
-%% WavePipeline.m
+% WavePipeline.m
 
 % Author: Sam Huguet 
 % Author e-mail: samhuguet1@gmail.com
