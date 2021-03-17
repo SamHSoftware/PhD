@@ -1,4 +1,4 @@
-% WavePipeline.m
+%% WavePipeline.m
 
 % Author: Sam Huguet 
 % Author e-mail: samhuguet1@gmail.com
@@ -35,7 +35,7 @@ folder_well = binImages(folder_well, doYouWantTobinImages, scalingFactor); % Not
 
 %% Flat field correct the images. 
 H2BChannel = 1; % double value needed e.g. 1.
-Channels_To_Not_FFC = [4]; % vector of double values which represent the channels which shouldn't be flat field corrected e.g. the brightfield channel. 
+Channels_To_Not_FFC = [4]; % vector of int values which represent the channels which shouldn't be flat field corrected e.g. the brightfield channel. 
 doYouWantToFFCImages = 'Yes'; % 'No' is the alternative variable. 
 lengthOfPixel = 0.325; % length (microns) of a pixel 20x short working distance lense, with no binning. The pixel size of the sensor is 6.5 um. That means that each pixel for 20x is 6.5/20 = 0.325 um.
 binFactor = 4; % This is the amount of binning that has been performed on the images. 
