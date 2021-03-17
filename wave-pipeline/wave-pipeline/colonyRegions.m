@@ -1,3 +1,21 @@
+%% colonyRegions.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: This function considers segmented nuclei within colonies, and
+% returns nuclei within specific sub-regions of the colony. 
+
+% Pipeline inputs: 
+% binaryColonyImage [n×m double matrix] --> An image of segmented nuclei
+% for an individual colony (nuclei should = 1, background should = 0). 
+
+% Pipeline outputs: 
+% outer25um_nuclei [n×m double matrix] --> An image of nuclei within the peripheral 25 um of the colony. 
+% notOuter25um_nuclei [n×m double matrix] --> An image with all nuclei but those from the peripheral 25 um of the colony. 
+% innerRegion_nuclei [n×m double matrix] --> An image of nuclei within a central, circular area of the colony (one with a radius of 25 um). 
+% notInnerRegion_nuclei [n×m double matrix] --> An image of all nuclei but those within a central, circular area of the colony (one with a radius of 25 um). 
+
 function [outer25um_nuclei, notOuter25um_nuclei, innerRegion_nuclei, notInnerRegion_nuclei] = colonyRegions(binaryColonyImage)
 
 % If the image doesn't have any nuclei, assign the images to the original
