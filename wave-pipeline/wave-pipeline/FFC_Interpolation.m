@@ -1,5 +1,21 @@
-% Script designed to use interpolation to flat field correct images from
-% the Yoko. 
+%% FFC_Interpolation.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: This flat field corrects images via retrospective shading correction, per channel, per field of view.  
+
+% Pipeline inputs: 
+% folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the directory of the images.
+% machineModel [struc] --> The model is expected to have been generated using pixelClassifierTrain (written by Marcelo Cicconet, and adapted for use in this pipeline) and loaded in within the main pipeline.
+% binFactor [int] --> The number of pixels in each dimension which are binned together. E.g. binFactor of 4 would mean 16 pixels were binned to make one pixel.  
+% doYouWantToFFCImages [string] --> 'Yes' to flat field correct, 'No' to do nothing.
+% Channels_To_Not_FFC [vector] --> Vector of double values which represent the channels which shouldn't be flat field corrected e.g. the brightfield channel. 
+% H2BChannel [int] --> The H2B channel. 
+% lengthOfPixel [] --> % length (microns) of a pixel 20x short working distance lense, with no binning. The pixel size of the sensor is 6.5 um. That means that each pixel for 20x is 6.5/20 = 0.325 um.
+
+% Pipeline outputs: 
+% folder_well [1×1 cell array] --> A string directory (within a 1×1 cell array) denoting the new directory of the newly flat field corrected images.
 
 function folder_well = FFC_Interpolation(folder_well, machineModel, binFactor, doYouWantToFFCImages, Channels_To_Not_FFC, H2BChannel, lengthOfPixel)
 
