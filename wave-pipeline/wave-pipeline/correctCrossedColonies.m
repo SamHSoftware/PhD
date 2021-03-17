@@ -1,10 +1,12 @@
-% Remove crossed colonies.
+%% correctCrossedColonies.m
 
-% Loop through all the colonies of DBSCAnnedGrid, and check that no
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: Loop through all the colonies of DBSCAnnedGrid, and check that no
 % colonies cross over each other. When a colony is crossed, it is
 % split in two. These two daughter colonies confuse things later
 % on, as the code assumes that each colony should only have one mask.
-
 % Crossed colonies typically manifest when the second round of DBSCANning
 % detects a colony IN THE MIDDLE of another colony. This new 'middle' 
 % colony slices the original colony in two. This is a design flawwhich I 
@@ -14,6 +16,16 @@
 % relabel it with a new number. This error management is needed for
 % the times when colonies begin to fragment upon the onset of
 % differentiation.
+
+% Function inputs: 
+% DBSCANnedGrid [n×m double array] --> The DBSCANned image in which
+% background is 0, non-clustered cels are 1, and colonies have a distinct
+% numerical label. 
+
+% Function outputs: 
+% corrected_DBSCANnedGrid [n×m double array] --> The DBSCANned image (now corrected) 
+% in which background is 0, non-clustered cels are 1, and colonies have a distinct
+% numerical label. 
 
 function corrected_DBSCANnedGrid = correctCrossedColonies(DBSCANnedGrid)
 
