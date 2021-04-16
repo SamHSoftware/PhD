@@ -1,3 +1,25 @@
+%% analysingWaves.m
+
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
+
+% Purpose: Consider a folder of .xlsx files (each containing the data for a
+% wave) and extract the numerical wave features. These are used to assign
+% each wave a 'grade' between 1 (low synchrony) and 4 (high synchrony). The
+% wave grades and wave features are then saved to the original directory. 
+
+% Here, I select the smaller of the two daughter colonies, and
+% relabel it with a new number. This error management is needed for
+% the times when colonies begin to fragment upon the onset of
+% differentiation.
+
+% Function inputs: 
+% The folder of .xlsx files (each containing the data for a
+% wave)
+
+% Function outputs:
+% The wave grades and wave features (these are saved to the original
+% directory).
 
 %% Reset the Command Window and the Workspace.
 clear;
