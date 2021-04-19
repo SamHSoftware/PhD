@@ -400,7 +400,7 @@ switch button
     deleteRowIndexes = logical(deleteRowIndexes);
     waveData(deleteRowIndexes,:) = []; 
 
-    %% RF 
+    %% Random forest.
     s2='Processed Data';
         saveDIR = strcat(filePath, s2); % Construct the current directory that we want.
     if ~exist(saveDIR, 'dir') % If the directory doesn't exist, then create it. 
@@ -445,7 +445,7 @@ switch button
     % We now need to set the WD to Original_Path.
     cd(filePath);
 
-    %% RF 
+    %% Random forest. 
     s2='Processed Data';
         saveDIR = strcat(filePath, s2); % Construct the current directory that we want.
     if ~exist(saveDIR, 'dir') % If the directory doesn't exist, then create it. 
