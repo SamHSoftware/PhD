@@ -18,25 +18,27 @@
 
 function corrected_colonyMask = correctColonyMask(example_colonyMask)
 
+% Figure out how many objects there are within the image. 
 colonyList = unique(example_colonyMask);
-num_labels = length(colonyList)-1; % number of colonies in t.
+num_labels = length(colonyList)-1; % Subtract 1 as we don't consider the background pixels. 
 
 % Identify the biggest colony. 
 colonyMask_props = table2array(struct2table(regionprops(example_colonyMask, 'Area')));
 theBiggestColony = max(colonyMask_props);
 thebiggestColony_location = find(colonyMask_props == theBiggestColony); % Find the row which houses the biggest colony fragment. 
 
-for er = 1 : num_labels
-    if er == thebiggestColony_location
+% Iterate through the fragments and remove the small erroneous ones. 
+for u = 1 : num_labels
+    if u == thebiggestColony_location
         continue;
     else
-        % If the colony is one of the small fragments,
-        % delete it.
-        thecolonyMask_er = example_colonyMask == er;  % The colony fragment mask.  
+        % If the mask is one of the small fragments, delete it.
+        thecolonyMask_er = example_colonyMask == u;  % The colony fragment mask.  
         example_colonyMask(thecolonyMask_er) = 0; % Delete that smaller mask from filledPerimeters.
     end
 end 
 
+% Return corrected_colonyMask.
 corrected_colonyMask = logical(example_colonyMask);
 
 end 
