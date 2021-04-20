@@ -41,7 +41,9 @@ end
 wellDirectoryArray = wellDirectoryArray(~cellfun('isempty',wellDirectoryArray)); % Remove empty cells and 'hey presto', you have all the subdirectories.
 
 %% Begin looping to make the segmented 3D grids. 
-for n = 1:length(wellDirectoryArray) % Loop through the dirrent folders pertaining to each well. 
+
+% Loop through the dirrent folders pertaining to each well. 
+for n = 1:length(wellDirectoryArray) 
 
     progress_N_Loop = (n/length(wellDirectoryArray))*100
     
@@ -83,8 +85,8 @@ for n = 1:length(wellDirectoryArray) % Loop through the dirrent folders pertaini
 
     % We need to remove all names from the list which aren't of the red or
     % green channel. 
-    x = ismember(channelArray, H2BChannel); % <-- Flag the ones that have '08' as their channel. 
-    gridNames(~x) = []; % <-- Delete all the flagged lines at once.
+    x = ismember(channelArray, H2BChannel); % Flag the images of the H2B channel. 
+    gridNames(~x) = []; % Remove non-H2B images.
     numberOfGrids = numel(gridNames); % The new number of grids having removed all the non-H2B ones. 
     
     % Make a blank array for concatenation later. 
