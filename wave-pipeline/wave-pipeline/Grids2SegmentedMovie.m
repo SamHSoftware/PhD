@@ -1,24 +1,26 @@
+%% grids2SegmentedMovie.m
 
+% Author: Sam Huguet 
+% Author e-mail: samhuguet1@gmail.com
 
+% Purpose: This is desiged to consider a folder of CV7000S multi-field 
+% images, segment those of the H2B channel, then concatenate them into a 
+% 3D stack (one which can be watched as a movie with FIJI). 
 
-%%% REMEMBER THAT IVE MADE THE n_lOOP PROGRESS EVERY 3, NOT EVERY 1. THIS
-%%% IS IMPORTANT AND SHOULD BE CHANGED WITH THE NEW EXPERIMENTS. 
+% Function inputs: 
+% (1) Folder of CV7000S multi-field stiched images. 
+% (2) You may also with to change the segmentation routine variables, though they are calibrated for reasonably accurate segmentation. 
 
+% Function outputs: 
+% (1) An individual movie of segmented fields. View this in FIJI or ImageJ.
 
+%% Preamble 
 
-
-
-
-
-
-%%% Thsi is desiged to take the data from ConcatenateImagesYoko and turn
-%%% all those mega grids of images into a3D stack of segmented images, a
-%%% logical movie of the masks, as it were. 
-
+% Clear the workspace and command window. 
 clear
 clc 
 
-% Preamble 
+% Denote the H2B channel number as a two character string e.g. '02'. 
 H2BChannel = '01';
 
 %% Select the folder called 'Grids'. This contains all the unsegmented grids. 
@@ -89,7 +91,7 @@ for n = 1:length(wellDirectoryArray) % Loop through the dirrent folders pertaini
     stack = [];
     
     %% Now we start looping through all the individual H2B grids. 
-    for v = 3:3:numberOfGrids
+    for v = 3:numberOfGrids
         
         %% Image segmentation. 
         progress_V_Loop = (v/numberOfGrids)*100
