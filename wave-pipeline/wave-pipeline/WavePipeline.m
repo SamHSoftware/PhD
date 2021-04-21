@@ -3,7 +3,7 @@
 % Author: Sam Huguet 
 % Author e-mail: samhuguet1@gmail.com
 
-% Purpose: This pipeline is deisgned to track human pluripotent stem cell
+% Purpose: This pipeline is designed to track human pluripotent stem cell
 % colonies and extract fluorescence information from individual nuclei. 
 
 % Pipeline inputs: 
