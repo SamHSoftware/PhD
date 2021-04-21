@@ -10,8 +10,11 @@ E-mail: samhuguet1@gmail.com
 - The microscopy data contains images of cell nuclei, expressing fluorescent markers in 3 different channels (one to stain the nucleus, and two reporters of biological activity). 
 - The pipeline extracts this fluorescence data, processes it, and outputs graphical and numerical data for further analysis. 
 
-## Loading in the module functions: 
+## Software requirements: 
+- This pipeline uses MATLAB scripts, and was designed for use with MATLAB 2019a. I recommed you use this version. 
 
-## Outputs:
+## Using the pipeline: 
 
-## Testing the ```otsu_segment()``` function 
+(1) Following the download of this code, modify you MATLAB path to include this folder, such that all functions can be accessed. 
+
+(2) Open ```WavePipeline.m```. This file contains a script with which you can sequentially run elements of the pipeline. There are several functions, many of which have a variety of input arguments (explained within the code) which can (and should!) be edited. I recommend that you run each function individually, then save the workspace. This way, when you handle vast quantities of data, and windows undergoes an automatic restart, you can minimise lost time. 
