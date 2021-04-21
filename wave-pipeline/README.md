@@ -21,3 +21,12 @@ E-mail: samhuguet1@gmail.com
 
 (3) You need to have created a trained segmentation model using the following function: ```pixelClassifierTrain.m```. This function can be found within the ```PixelClassifer2_Edited``` folder. This code is not originally mine (see the folder's README), but I've had to re-upload it due to a number of small edits which have made it compatible with my pipeline. If you don't want to train your own model, I've included a pre-trained model which can work very well with small claibrations (discussed later). 
 
+Once you have trained your model, you will need to use the following code... 
+```
+%% Select the segmentation model generated usign machine learning.
+machineModelFullPath = loadMachineModel;
+load(machineModelFullPath); % Loads model. 
+% For some reason, when loaded in, the model always loads as a variable called 'model'. Any attempt to load it in with another name fails. Therefore, I let it load in as 'model', then rename it to an output variable later. 
+machineModel = model; clear model; clear machineModelFullPath;
+```
+... to load in your trained segmentation model. Simple. 
