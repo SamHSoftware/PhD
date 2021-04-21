@@ -1,5 +1,6 @@
-A single-layer Random Forest model for pixel classification (image segmentation).
+NB: I did not develop this code, which was writted by Marcelo Cicconet. This copy of his work contains a number of edits which have made it compatible with my pipeline. I have also included a new function ```PixelClassifer2```, which is used for semgnetation within the main pipeline.  
 
+A single-layer Random Forest model for pixel classification (image segmentation).
 
 This code is based on
 https://github.com/HMS-IDAC/MLRFS
