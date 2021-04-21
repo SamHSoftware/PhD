@@ -18,3 +18,6 @@ E-mail: samhuguet1@gmail.com
 (1) Following the download of this code, modify you MATLAB path to include this folder, such that all functions can be accessed. 
 
 (2) Open ```WavePipeline.m```. This file contains a script with which you can sequentially run elements of the pipeline. There are several functions, many of which have a variety of input arguments (explained within the code) which can (and should!) be edited. I recommend that you run each function individually, then save the workspace. This way, when you handle vast quantities of data, and windows undergoes an automatic restart, you can minimise lost time. 
+
+(3) You need to have created a trained segmentation model using the following function: ```pixelClassifierTrain.m```. This function can be found within the ```PixelClassifer2_Edited``` folder. This code is not originally mine (see the folder's README), but I've had to re-upload it due to a number of small edits which have made it compatible with my pipeline. If you don't want to train your own model, I've included a pre-trained model which can work very well with small claibrations (discussed later). 
+
