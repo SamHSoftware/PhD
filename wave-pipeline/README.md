@@ -19,7 +19,7 @@ E-mail: samhuguet1@gmail.com
 
 (2) Open ```WavePipeline.m```. This file contains a script with which you can sequentially run elements of the pipeline. There are several functions, many of which have a variety of input arguments (explained within the code) which can (and should!) be edited. I recommend that you run each function individually, then save the workspace. This way, when you handle vast quantities of data, and windows undergoes an automatic restart, you can minimise lost time. 
 
-(3) You need to have created a trained segmentation model using the following function: ```pixelClassifierTrain.m```. This function can be found within the ```PixelClassifer2_Edited``` folder. This code is not originally mine (see the folder's README), but I've had to re-upload it due to a number of small edits which have made it compatible with my pipeline. If you don't want to train your own model, I've included a pre-trained model which can work very well with small claibrations (discussed later). 
+(3) You need to have created a trained segmentation model using the following function: ```pixelClassifierTrain.m```. This function can be found within the ```PixelClassifer2_Edited``` folder. This code is not originally mine (see the folder's README), but I've had to re-upload it due to a number of small edits which have made it compatible with my pipeline. If you don't want to train your own model, I've included a pre-trained model (called ```trained_rf_segmentation_model.mat```) which can work very well with small claibrations. 
 
 Once you have trained your model, you will need to use the following code... 
 ```
@@ -29,4 +29,21 @@ load(machineModelFullPath); % Loads model.
 % For some reason, when loaded in, the model always loads as a variable called 'model'. Any attempt to load it in with another name fails. Therefore, I let it load in as 'model', then rename it to an output variable later. 
 machineModel = model; clear model; clear machineModelFullPath;
 ```
-... to load in your trained segmentation model. Simple. 
+... to load in your trained segmentation model, or the one I've provided. Simple.  
+
+When the model is used for segmentation by the ```pixelClassifer2``` function, it outputs 3 images.  
+(1) An 'adjusted image', one in which the pixel intensity histogram is simply adjusted so that it's easier to see nuclei. 
+(2) An RGB probability map, which denotes the probability that each pixel is of a particular class (see my thesis for more detail). 
+(3) A binary image of the binary masks.  
+
+The third output isn't actually that usful in itself, as it assumes that you have correctly calibrated the parameters inside the function. To get an accurate image of binary masks, you need to consider the RGB probability map and impose conditional thresholds upon each of the three channels to create a binary mask. You can do so with this code (where ```param``` is specified by you in the main pipeline): 
+```
+[~, RGBprobs, ~] = pixelClassifier2(imageName, machineModel, param);
+backgroundMasks = RGBprobs(:,:,1) > 0.05 & RGBprobs(:,:,2) < 0.5 & RGBprobs(:,:,3) < 0.2; % This is the line you need to change. 
+```
+The first threshold refers to 'background' intensity, the second to 'nuclear boarder' intensity and the third to 'nuclear' intensity.  
+
+Feed this function an image to calibrate it, then save those calibrations. You will need to enter the re-calibrated thresholds in two locations: 
+(1) 
+                    	
+                    
