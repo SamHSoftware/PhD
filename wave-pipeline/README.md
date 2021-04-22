@@ -31,10 +31,10 @@ machineModel = model; clear model; clear machineModelFullPath;
 ```
 ... to load in your trained segmentation model, or the one I've provided. Simple.  
 
-When the model is used for segmentation by the ```pixelClassifer2``` function, it outputs 3 images.  
-(3.1) An 'adjusted image', one in which the pixel intensity histogram is simply adjusted so that it's easier to see nuclei. 
-(3.2) An RGB probability map, which denotes the probability that each pixel is of a particular class (see my thesis for more detail). 
-(3.3) A binary image of the binary masks.  
+When the model is used for segmentation by the ```pixelClassifer2``` function, it outputs 3 images.    
+(A) An 'adjusted image', one in which the pixel intensity histogram is simply adjusted so that it's easier to see nuclei.  
+(B) An RGB probability map, which denotes the probability that each pixel is of a particular class (see my thesis for more detail).   
+(C) A binary image of the binary masks.    
 
 The third output isn't actually that usful in itself, as it assumes that you have correctly calibrated the parameters inside the function. To get an accurate image of binary masks, you need to consider the RGB probability map and impose conditional thresholds upon each of the three channels to create a binary mask. You can do so with this code (where ```param``` is specified by you in the main pipeline): 
 ```
@@ -49,7 +49,7 @@ Feed this function an image to calibrate it, then enter the re-calibrated thresh
 
 Alternatively, you can always swap this out for your own segmentation function. That would work without issue. 
 
-(4) The rest of the pipleine is self-explanatory. You simply run each section, such that your images are: 
+(4) The rest of the pipleine is self-explanatory. You simply run each section, such that your images are:    
 (a) Binned.  
 (b) Flat field corrected.  
 (c) Stiched into multi-field images.  
