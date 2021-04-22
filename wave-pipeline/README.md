@@ -32,9 +32,9 @@ machineModel = model; clear model; clear machineModelFullPath;
 ... to load in your trained segmentation model, or the one I've provided. Simple.  
 
 When the model is used for segmentation by the ```pixelClassifer2``` function, it outputs 3 images.  
-(1) An 'adjusted image', one in which the pixel intensity histogram is simply adjusted so that it's easier to see nuclei. 
-(2) An RGB probability map, which denotes the probability that each pixel is of a particular class (see my thesis for more detail). 
-(3) A binary image of the binary masks.  
+(3.1) An 'adjusted image', one in which the pixel intensity histogram is simply adjusted so that it's easier to see nuclei. 
+(3.2) An RGB probability map, which denotes the probability that each pixel is of a particular class (see my thesis for more detail). 
+(3.3) A binary image of the binary masks.  
 
 The third output isn't actually that usful in itself, as it assumes that you have correctly calibrated the parameters inside the function. To get an accurate image of binary masks, you need to consider the RGB probability map and impose conditional thresholds upon each of the three channels to create a binary mask. You can do so with this code (where ```param``` is specified by you in the main pipeline): 
 ```
@@ -43,7 +43,11 @@ backgroundMasks = RGBprobs(:,:,1) > 0.05 & RGBprobs(:,:,2) < 0.5 & RGBprobs(:,:,
 ```
 The first threshold refers to 'background' intensity, the second to 'nuclear boarder' intensity and the third to 'nuclear' intensity.  
 
-Feed this function an image to calibrate it, then save those calibrations. You will need to enter the re-calibrated thresholds in two locations: 
-(1) 
-                    	
+Feed this function an image to calibrate it, then enter the re-calibrated thresholds in two locations: 
+(3.1) Line 204 of ```FFC_Interpolation.m```.
+(3.2) Line 144 of ```segmentAndDBSCAN.m```.  
+
+Alternatively, you can always swap this out for your own segmentation function. That would work without issue. 
+
+(4)           	
                     
