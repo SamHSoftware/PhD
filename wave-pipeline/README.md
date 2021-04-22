@@ -49,5 +49,11 @@ Feed this function an image to calibrate it, then enter the re-calibrated thresh
 
 Alternatively, you can always swap this out for your own segmentation function. That would work without issue. 
 
-(4)           	
+(4) The rest of the pipleine is self-explanatory. You simply run each section, such that your images are: 
+(a) Binned. 
+(b) Flat field corrected. 
+(c) Stiched into multi-field images. 
+(d) Segmented and DBSCANned. 
+(e) Tracked. 
+(f) Analysed for graphical data. 
                     
