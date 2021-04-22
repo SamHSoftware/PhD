@@ -44,8 +44,8 @@ backgroundMasks = RGBprobs(:,:,1) > 0.05 & RGBprobs(:,:,2) < 0.5 & RGBprobs(:,:,
 The first threshold refers to 'background' intensity, the second to 'nuclear boarder' intensity and the third to 'nuclear' intensity.  
 
 Feed this function an image to calibrate it, then enter the re-calibrated thresholds in two locations: 
-(3.1) Line 204 of ```FFC_Interpolation.m```.  
-(3.2) Line 144 of ```segmentAndDBSCAN.m```.    
+(3.1) Line 204 of ```FFC_Interpolation.m```.    
+(3.2) Line 144 of ```segmentAndDBSCAN.m```.      
 
 Alternatively, you can always swap this out for your own segmentation function. That would work without issue. 
 
