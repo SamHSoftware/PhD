@@ -22,7 +22,7 @@ uiwait(msgbox('The biggest issue with this pipeline are automatic windows update
 uiwait(msgbox('Select the folder containing the microscopy images','Sample Image','modal'));
 folder_well = uipickfiles;
 
-%% Select the segmentation model generated usign machine learning.
+%% Select the segmentation model generated using machine learning.
 machineModelFullPath = loadMachineModel;
 load(machineModelFullPath); % Loads model. 
 % For some reason, when loaded in, the model always loads as a variable called 'model'. Any attempt to load it in with another name fails. Therefore, I let it load in as 'model', then rename it to an output variable later. 
