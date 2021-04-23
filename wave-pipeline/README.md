@@ -58,5 +58,5 @@ Alternatively, you can always swap this out for your own segmentation function. 
 (E) Tracked.  
 (F) Create .xlsx files for each tracked colony, and movies of the each well through time. 
 
-(5) 
+(5) Finally, open ```analysingWaves.m``` in order to extract numerical features from the .xlsx files. ```analysingWaves.m``` relies upon an additional package, named ```generic-random-forest```, created by Soumya Banerjee in 2015. I have included a copy of this package so that it can conveniently downloaded. ```analysingWaves.m``` can be run to output a condensed list of numerical features, which can then be statistically analysed. 
                     
