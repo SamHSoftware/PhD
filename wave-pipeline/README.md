@@ -56,7 +56,7 @@ Alternatively, you can always swap this out for your own segmentation function. 
 (C) Stiched into multi-field images.  
 (D) Segmented and DBSCANned.  
 (E) Tracked.  
-(F) Create .xlsx files for each tracked colony, and movies of the each well through time. 
+(F) Create .xlsx files for each tracked colony, and movies of the each well through time. You can find examples of these movies (with binary masks of colonies, and colonies tracked and labelled through time) [here](https://github.com/SamHSoftware/PhD/tree/main/wave-pipeline/output_data).
 
 (5) Finally, open ```analysingWaves.m``` in order to extract numerical features from the .xlsx files. ```analysingWaves.m``` relies upon an additional package, named ```random-forest-generic```, created by Soumya Banerjee in 2015. I have included a copy of this package so that it can conveniently downloaded. ```analysingWaves.m``` can be run to output a condensed list of numerical features, which can then be statistically analysed. 
                     
