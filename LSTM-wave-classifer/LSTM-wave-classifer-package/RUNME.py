@@ -27,9 +27,8 @@ LSTM_model = train_LSTM(df,
 # Function output 1: The path of that the folder selected by the user. 
 classifiation_directory = folder_selection_dialog()
 
-# A function to extract and condense the relevant training data. 
-# Function input arg 1: directory (string) --> The directory to the folder containing the .xlsx data.
-# Function input arg 2: train_or_classify (string) --> Use 'train', when collecting data to train the model. Use 'classify' when collecting data which needs to be classified.
-# Function output 1: df --> The pandas dataframe containing the training information.
-classification_df = get_red_waves(classifiation_directory,
-                                  train_or_classify = 'classify')
+# A function to take the trained LSTM model, and use it to classify our data. 
+# Function input arg 1: directory [string] --> The directory containing the data which needs to be classified. 
+# Function input arg 1: LSTM_model [bound method] --> The trained LSTM model from the 'train_LSTM' function. 
+classify_waves(classifiation_directory,
+               LSTM_model = trained_model)
