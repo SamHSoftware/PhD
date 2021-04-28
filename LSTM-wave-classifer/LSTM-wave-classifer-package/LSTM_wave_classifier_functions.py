@@ -13,6 +13,7 @@ import torch.nn as nn
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler 
 from sklearn.preprocessing import MinMaxScaler 
+import shutil
 
 # A function to allow the user to select the folder containing the data.
 # Function inputs args: None. 
@@ -143,7 +144,7 @@ def plot_confusion_matrix(cm,
         plt.close()
     else:
         plt.show()   
-        
+
 # A function to extract and condense the relevant data. 
 # Function input arg 1: directory (string) --> The directory to the folder containing the .xlsx data.
 # Function input arg 2: train_or_classify (string) --> Use 'train', when collecting data to train the model. Use 'classify' when collecting data which needs to be classified.
@@ -220,7 +221,7 @@ def train_LSTM(df,
     y_training = y_training.transpose()
     y_testing = y_testing.transpose()
     
-    # Scale the data by 'removign the mean and scaling to unit variance'.
+    # Scale the data by 'removing the mean and scaling to unit variance'.
     x_training[x_training.columns] = StandardScaler().fit_transform(x_training[x_training.columns])
     x_testing[x_testing.columns] = StandardScaler().fit_transform(x_testing[x_testing.columns])
     
@@ -418,3 +419,57 @@ def train_LSTM(df,
                           normalize=False)
     
     return model 
+
+# A function to take the trained LSTM model, and use it to classify our data. 
+# Funciton input arg 1: classifiation_directory [string] --> The directory containing the data which needs to be classified. 
+# Function input arg 1: LSTM_model [bound method] --> The trained LSTM model from the 'train_LSTM' function. 
+def classify_waves(classifiation_directory,
+                   LSTM_model = trained_model):
+    
+    ##### (1) Extract the data from the directory. 
+    df = get_red_waves(directory, train_or_classify='classify')
+    
+    ##### (2) Use the computer graphics card if one is available. 
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    ##### (3) Load and prepare the data. 
+    x = df.iloc[:, 2:len(df.columns)]
+    
+    # Transpose all the data, so that the LSTM correctly understands that each column is a sequence. 
+    x = x.transpose()
+    
+    # Scale the data by 'removing the mean and scaling to unit variance'.
+    x[x.columns] = StandardScaler().fit_transform(x[x.columns])
+    
+    # Convert the data to tensors. 
+    x = torch.from_numpy(x.to_numpy(np.float32))
+
+    # Disable the dropout while we classify our data. 
+    trained_model.eval() 
+
+    # torch.no_grad() disables gradient calucation. We don't neet it for classification. 
+    with torch.no_grad():
+
+        predicted = trained_model(x.to(device))
+        predicted_logical = predicted[:,0].round().cpu()
+    
+    ##### (4) Create a new directory to store the class '1' waves. 
+    
+    new_directory = os.path.join(classification_directory, 'grade_1_waves')
+    os.mkdir(new_directory) 
+    
+    ##### (5) Copy class '1' wave files into the new directory. 
+    
+    for x in range(len(df)):
+        
+        if predicted_logical[x] == 1: 
+        
+            file_name = df.iloc[x, 1]
+            current_file_path = os.path.join(classification_directory, file_name)
+            new_file_path = os.path.join(new_directory, file_name)
+
+            shutil.copyfile(current_file_path, new_file_path)
+    
+    ##### (6) Print completion statement. 
+    
+    print(f"'classify_waves' is complete. You can find the grade 1 waves in ", new_directory)
