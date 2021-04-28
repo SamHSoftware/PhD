@@ -18,7 +18,7 @@ df = get_red_waves(directory,
 # Function inputs arg 2: save_plot --> True or False. When True, saves plot to the img folder of the package. 
 # Function inputs arg 3: display_plot --> True or False. When True, displays plot within conole. 
 # Function output 1: The trained model.
-LSTM_model = train_LSTM(df,
+trained_model = train_LSTM(df,
                         save_plot = False,
                         display_plot = True):
     
