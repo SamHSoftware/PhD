@@ -50,3 +50,19 @@ trained_model = train_LSTM(df,
 ```
 
 It should be noted that if you use this model, you will need to make a number of modifications to the ```train_LSTM``` function. The include optimisations to the number of epochs, the batch size and the optimizer. I havent included these parameters as input args, as these edits will be numerous and will go beyond quick numerical chenges. 
+
+(4) Finally, run the following code to select the folder of excel files you wish to classify: 
+```
+# Select the folder containing the data which needs to be classified.
+# Function inputs args: None. 
+# Function output 1: The path of that the folder selected by the user. 
+classifiation_directory = folder_selection_dialog()
+
+# A function to take the trained LSTM model, and use it to classify our data. 
+# Function input arg 1: directory [string] --> The directory containing the data which needs to be classified. 
+# Function input arg 1: LSTM_model [bound method] --> The trained LSTM model from the 'train_LSTM' function. 
+classify_waves(classifiation_directory,
+               LSTM_model = trained_model)
+```
+
+The code will output a new folder, named ```grade_1_waves``` in the ```classifiation_directory```. You can then analyse these as you please. 
