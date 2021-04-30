@@ -25,7 +25,9 @@ from LSTM_wave_classifier_functions import *
 training_directory = folder_selection_dialog()
 ```
 
-This will open a GUI, which which you should navigate to and select the folder of excel files you wish to use to train the LSTM. Regarding the format of the excel files (including what each column should contain), please refer to the data from my PhD, and explore my 'PhD' folder on the University of Bristol RDSF. In the drug experiments folder, you will find many example data sets. 
+This will open a GUI (see the image below), which which you should navigate to and select the folder of excel files you wish to use to train the LSTM. Regarding the format of the excel files (including what each column should contain), please refer to the data from my PhD, and explore my 'PhD' folder on the University of Bristol RDSF. In the drug experiments folder, you will find many example data sets. 
+
+<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/folder_selection.PNG?raw=true" alt="folder selection GUI" width="500"/>
 
 (2) Run the following code to extract and condense the relevant data for the LSTM:
 ```
@@ -49,7 +51,11 @@ trained_model = train_LSTM(df,
                         display_plot = True):
 ```
 
-It should be noted that if you use this model, you will need to make a number of modifications to the ```train_LSTM``` function. The include optimisations to the number of epochs, the batch size and the optimizer. I havent included these parameters as input args, as these edits will be numerous and will go beyond quick numerical chenges. 
+It should be noted that if you use this model, you will need to make a number of modifications to the ```train_LSTM``` function. The include optimisations to the number of epochs, the batch size and the optimizer. I havent included these parameters as input args, as these edits will be numerous and will go beyond quick numerical changes. 
+
+Once optimised and run, the code will output a number of different images, which you can use to assess how well the model has trained. I have included examples below, after the model was partially trained over a few epochs. These images will either be displayed as the script runs, or they will be saved within a new folder (named ```img```) in the previous input arg, ```directory```.
+
+
 
 (4) Finally, run the following code to select the folder of excel files you wish to classify: 
 ```
