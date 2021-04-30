@@ -55,11 +55,11 @@ It should be noted that if you use this model, you will need to make a number of
 
 Once optimised and run, the code will output a number of different images, which you can use to assess how well the model has trained. I have included examples below, after the model was partially trained over a few epochs. These images will either be displayed as the script runs, or they will be saved within a new folder (named ```img```) in the previous input arg, ```directory```.
 
-<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/confusion_matrix.png?raw=true" alt="folder selection GUI" width="500"/>  
+<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/confusion_matrix.png?raw=true" alt="folder selection GUI" width="300"/>  
 
-<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/training_and_validation_accuracy.png?raw=true" alt="folder selection GUI" width="500"/>  
+<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/training_and_validation_accuracy.png?raw=true" alt="folder selection GUI" width="400"/>  
 
-<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/training_and_validation_loss.png?raw=true" alt="folder selection GUI" width="500"/>
+<img src="https://github.com/SamHSoftware/PhD/blob/main/LSTM-wave-classifer/img/training_and_validation_loss.png?raw=true" alt="folder selection GUI" width="400"/>
 
 (4) Finally, run the following code to select the folder of excel files you wish to classify: 
 ```
